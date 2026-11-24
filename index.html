@@ -1,64 +1,266 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Hasanna Mohamed Lamin Balak</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; line-height: 1.6; }
-        header { background-color: #2c3e50; color: #fff; padding: 2rem 0; text-align: center; }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { font-size: 1.2rem; opacity: 0.8; }
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-        .section-title { border-bottom: 2px solid #3498db; padding-bottom: 0.5rem; margin-bottom: 1rem; color: #2c3e50; }
-        .project-card { background: #fff; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .project-card h3 { margin-top: 0; }
-        .btn { display: inline-block; background: #3498db; color: #fff; padding: 0.5rem 1rem; text-decoration: none; border-radius: 5px; margin-top: 1rem; transition: background 0.3s; }
-        .btn:hover { background: #2980b9; }
-        footer { text-align: center; padding: 2rem; background: #2c3e50; color: #fff; margin-top: 2rem; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hasanna Mohamed Lamin Balak – Développeur web et logiciel</title>
+<meta name="description" content="Portfolio de Hasanna Mohamed Lamin Balak, étudiant en BTS SIO option SLAM à Saint-Étienne : projets web, C#, SQL et Git.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f1eef4;
+  --surface: #faf8fc;
+  --ink: #231a33;
+  --muted: #66597a;
+  --line: #d8d0e3;
+  --accent: #b3205f;
+  --accent-ink: #ffffff;
+  --token: #0b6e6e;
+  --token-bg: #d6efee;
+  --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --body: 'Figtree', 'Segoe UI', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #19131f; --surface: #221a2b; --ink: #efe9f5; --muted: #b0a3c2;
+    --line: #3a2f48; --accent: #ff7fb0; --accent-ink: #2a0a1a;
+    --token: #7fe0d9; --token-bg: #153b3a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #19131f; --surface: #221a2b; --ink: #efe9f5; --muted: #b0a3c2;
+  --line: #3a2f48; --accent: #ff7fb0; --accent-ink: #2a0a1a;
+  --token: #7fe0d9; --token-bg: #153b3a;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.65;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Navigation */
+nav { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 3.5rem; gap: 1rem; }
+nav .logo { font-family: var(--display); font-weight: 800; text-decoration: none; letter-spacing: -.02em; }
+nav ul { display: flex; gap: 1.25rem; list-style: none; margin: 0; padding: 0; font-size: .95rem; }
+nav ul a { text-decoration: none; color: var(--muted); }
+nav ul a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+
+/* Hero */
+.hero { padding: 5rem 0 4rem; }
+.hero h1 {
+  font-family: var(--display); font-weight: 800; margin: 0 0 1.25rem;
+  font-size: clamp(2.6rem, 9vw, 6rem); line-height: .98; letter-spacing: -.045em;
+}
+.hero .role { font-size: 1.25rem; max-width: 34rem; color: var(--muted); margin: 0 0 2rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.btn {
+  display: inline-block; padding: .7rem 1.25rem; border-radius: 6px; font-weight: 600;
+  text-decoration: none; border: 2px solid var(--ink); font-size: 1rem;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:hover { transform: translateY(-1px); }
+
+/* Sections */
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2 { font-family: var(--display); font-size: clamp(1.7rem, 4vw, 2.3rem); letter-spacing: -.03em; margin: 0 0 1.5rem; line-height: 1.15; }
+h3 { font-family: var(--display); font-size: 1.45rem; margin: 0; letter-spacing: -.02em; }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.about p { margin: 0 0 1rem; max-width: 34rem; }
+.skills { margin: 0; display: grid; gap: 1.1rem; }
+.skills dt { font-weight: 600; margin-bottom: .35rem; }
+.skills dd { margin: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.tag { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: .1rem .75rem; font-size: .92rem; }
+
+/* Projets */
+.project { display: grid; grid-template-columns: 1fr 1.1fr; gap: 2.5rem; padding: 2rem 0; border-top: 1px solid var(--line); }
+.project:first-of-type { border-top: 0; padding-top: 0; }
+.status { display: inline-block; font-size: .9rem; font-weight: 600; color: var(--token); background: var(--token-bg); border-radius: 4px; padding: 0 .5rem; margin-bottom: .6rem; }
+.project p { margin: .8rem 0 1rem; max-width: 32rem; }
+.project .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.25rem; }
+.links { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+.links a { font-weight: 600; text-underline-offset: 4px; }
+.facts { margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem; align-content: start; }
+.facts li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: .8rem 1rem; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+
+/* Survol élément par élément : chaque partie réagit seule */
+.project h3 { background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 100% / 0 3px; display: inline; transition: background-size .35s ease; }
+.project h3:hover { background-size: 100% 3px; }
+.facts li:hover { transform: translateX(10px); border-color: var(--accent); box-shadow: -4px 0 0 var(--accent); }
+.tag { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
+.tag:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* Survol par catégorie de compétences */
+.skills > div { padding: .5rem .9rem; border-left: 3px solid transparent; border-radius: 4px; transition: border-color .3s ease, background-color .3s ease, transform .3s ease; }
+.skills > div:hover { border-left-color: var(--accent); background: var(--surface); transform: translateX(6px); }
+.skills dt { transition: color .3s ease; }
+.skills > div:hover dt { color: var(--accent); }
+.links a { text-decoration: none; background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 100% 2px; transition: background-size .25s ease, color .25s ease; }
+.links a:hover, .links a:focus-visible { background-size: 0 2px; color: var(--accent); }
+
+/* Démo Veilio */
+.demo { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem; align-self: start; }
+.demo h4 { margin: 0 0 .25rem; font-family: var(--display); font-size: 1.1rem; }
+.demo .note { margin: 0 0 1rem; font-size: .9rem; color: var(--muted); }
+.row { display: grid; gap: .3rem; margin-bottom: .9rem; }
+.row label { font-size: .9rem; font-weight: 600; }
+.row input {
+  font: inherit; padding: .5rem .7rem; border-radius: 6px; width: 100%;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+}
+.out { font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; font-size: .92rem; color: var(--token); background: var(--token-bg); border-radius: 6px; padding: .3rem .6rem; overflow-wrap: anywhere; min-height: 2rem; }
+
+/* Contact */
+.contact { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; font-size: 1.15rem; }
+.contact span { display: inline-block; min-width: 6rem; color: var(--muted); font-size: 1rem; }
+.contact a { text-underline-offset: 4px; font-weight: 600; overflow-wrap: anywhere; }
+
+footer { border-top: 1px solid var(--line); padding: 1.75rem 0 2.5rem; color: var(--muted); font-size: .92rem; }
+
+@media (max-width: 780px) {
+  nav ul { gap: .9rem; }
+  .hero { padding: 3rem 0 2.5rem; }
+  .about, .project { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn:hover { transform: none; }
+  .facts li:hover, .skills > div:hover { transform: none; }
+  .project *, .project *::before, .skills, .skills * { transition: none !important; }
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Hasanna Mohamed Lamin Balak</h1>
-        <p>Étudiant en BTS SIO SLAM | Développeur Web & Logiciel</p>
-    </header>
+<nav aria-label="Navigation principale">
+  <div class="wrap">
+    <a class="logo" href="#top">H. Mohamed Lamin Balak</a>
+    <ul>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <div class="container">
-        <section>
-            <h2 class="section-title">À propos de moi</h2>
-            <p>Étudiant en 2ᵉ année de BTS SIO option SLAM à Saint-Étienne. Je suis passionné par le développement et je cherche à mettre mes compétences en pratique à travers des projets concrets.</p>
-            <p><strong>Compétences :</strong> HTML5, CSS3, JavaScript, C#, SQL, Git.</p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Mes Projets</h2>
-            
-            <div class="project-card">
-                <h3>Site Web - Pizzeria San Remo</h3>
-                <p>Réalisation complète d'un site vitrine pour une pizzeria à Saint-Étienne. Conception de A à Z, incluant un menu interactif de plus de 40 produits. Développé en HTML5, CSS3 et JavaScript pur.</p>
-                <a href="https://hasanna995.github.io/site-san-remo-1/" class="btn" target="_blank">Voir le site</a>
-                <a href="https://github.com/Hasanna995/site-san-remo-1" class="btn" target="_blank">Voir le code</a>
-            </div>
-
-            <div class="project-card">
-                <h3>Projet Veilio (En cours)</h3>
-                <p>Réflexion sur un outil "Playground" pour tester l'API de tokenisation de données sensibles de Veilio. Objectif : créer une interface en Node.js permettant de générer et visualiser des tokens en temps réel.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title">Me Contacter</h2>
-            <p>📧 Email : <a href="mailto:hasanna.mohamed.lamin.balak.pro@gmail.com">hasanna.mohamed.lamin.balak.pro@gmail.com</a></p>
-            <p>📞 Téléphone : 07 67 71 07 22</p>
-            <p>💻 GitHub : <a href="https://github.com/Hasanna995" target="_blank">github.com/Hasanna995</a></p>
-        </section>
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>Hasanna Mohamed Lamin Balak</h1>
+    <p class="role">Étudiant en BTS SIO option SLAM à Saint-Étienne. Je développe des sites web et des applications.</p>
+    <div class="actions">
+      <a class="btn primary" href="#projets">Voir mes projets</a>
+      <a class="btn" href="mailto:hasanna.mohamed.lamin.balak.pro@gmail.com">M’écrire</a>
     </div>
+  </div>
+</header>
 
-    <footer>
-        <p>&copy; 2026 Hasanna Mohamed Lamin Balak. Tous droits réservés.</p>
-    </footer>
+<main>
+  <section id="apropos">
+    <div class="wrap about">
+      <div>
+        <h2>À propos</h2>
+        <p>Je suis en deuxième année de BTS SIO option SLAM (Solutions logicielles et applications métier). Le développement me passionne, et j’apprends surtout en construisant des projets concrets, du site vitrine à l’outil pour développeurs.</p>
+        <p>Mon code est sur GitHub, et chaque projet ci-dessous renvoie vers sa version en ligne ou son dépôt quand il existe.</p>
+      </div>
+      <dl class="skills" aria-label="Compétences">
+        <div><dt>Web</dt><dd><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span></dd></div>
+        <div><dt>Logiciel et données</dt><dd><span class="tag">C#</span><span class="tag">SQL</span></dd></div>
+        <div><dt>Outils</dt><dd><span class="tag">Git</span><span class="tag">GitHub</span></dd></div>
+      </dl>
+    </div>
+  </section>
 
+  <section id="projets">
+    <div class="wrap">
+      <h2>Projets</h2>
+
+      <article class="project">
+        <div>
+          <span class="status">En ligne</span>
+          <h3>Site vitrine de la pizzeria San Remo</h3>
+          <p>Site complet pour une pizzeria de Saint-Étienne, conçu de A à Z : menu interactif de plus de 40 produits, écrit en HTML5, CSS3 et JavaScript, sans framework.</p>
+          <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span></div>
+          <div class="links">
+            <a href="https://hasanna995.github.io/site-san-remo-1/" target="_blank" rel="noopener">Voir le site</a>
+            <a href="https://github.com/Hasanna995/site-san-remo-1" target="_blank" rel="noopener">Voir le code</a>
+          </div>
+        </div>
+        <ul class="facts" aria-label="Points clés du projet">
+          <li>Projet réalisé seul, de la conception à la mise en ligne</li>
+          <li>Plus de 40 produits dans un menu interactif</li>
+          <li>JavaScript pur, aucune dépendance</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <div>
+          <span class="status">En cours</span>
+          <h3>Veilio Playground</h3>
+          <p>Un outil pour essayer l’API de tokenisation de données sensibles de Veilio : une interface en Node.js qui génère des tokens et les affiche en temps réel.</p>
+          <div class="tags"><span class="tag">Node.js</span><span class="tag">API</span></div>
+        </div>
+        <div class="demo">
+          <h4>Aperçu de l’idée</h4>
+          <p class="note">Démo illustrative dans le navigateur : les tokens sont simulés, aucun appel n’est fait à l’API Veilio.</p>
+          <div class="row">
+            <label for="d-nom">Nom</label>
+            <input id="d-nom" data-demo type="text" value="Jean Dupont" autocomplete="off">
+            <div class="out" aria-live="polite"></div>
+          </div>
+          <div class="row">
+            <label for="d-mail">E-mail</label>
+            <input id="d-mail" data-demo type="text" value="jean@exemple.fr" autocomplete="off">
+            <div class="out" aria-live="polite"></div>
+          </div>
+          <div class="row">
+            <label for="d-carte">Numéro de carte (fictif)</label>
+            <input id="d-carte" data-demo type="text" value="4970 1000 0000 0000" autocomplete="off">
+            <div class="out" aria-live="polite"></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Me contacter</h2>
+      <ul class="contact">
+        <li><span>E-mail</span><a href="mailto:hasanna.mohamed.lamin.balak.pro@gmail.com">hasanna.mohamed.lamin.balak.pro@gmail.com</a></li>
+        <li><span>Téléphone</span><a href="tel:+33767710722">07 67 71 07 22</a></li>
+        <li><span>GitHub</span><a href="https://github.com/Hasanna995" target="_blank" rel="noopener">github.com/Hasanna995</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Hasanna Mohamed Lamin Balak. Tous droits réservés.</div>
+</footer>
+
+<script>
+// Démo illustrative : transforme chaque saisie en faux token (hash simple, côté navigateur uniquement).
+function fakeToken(value) {
+  if (!value.trim()) return '';
+  var h = 5381;
+  for (var i = 0; i < value.length; i++) h = ((h << 5) + h + value.charCodeAt(i)) >>> 0;
+  var h2 = (h * 2654435761) >>> 0;
+  return 'tok_' + h.toString(36) + h2.toString(36).slice(0, 4);
+}
+document.querySelectorAll('[data-demo]').forEach(function (input) {
+  var out = input.parentElement.querySelector('.out');
+  function update() { out.textContent = fakeToken(input.value); }
+  input.addEventListener('input', update);
+  update();
+});
+</script>
 </body>
 </html>
